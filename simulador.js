@@ -65,20 +65,6 @@ function  fazerPedido(Itenspedido){
     })
 }
 
-
-console.log("Enviando seu pedido para cozinha...");
-
-//Instanciar realização do pedido
-fazerPedido(pedido)
-    .then(mensagemDeSucesso => {
-        console.log("Está tudo ok!");
-        console.log(mensagemDeSucesso);
-    })
-    .catch(mensagemDeErro => {
-        console.log("Falha");
-        console.log(mensagemDeErro);
-    });
-
 //Simular forma de pagamento
 async function processarPagamento(pedido){
     try{
@@ -86,17 +72,37 @@ async function processarPagamento(pedido){
 
         const resultadoPagamento = await new Promise((resolve, reject) => {
             setTimeout(() => {
-                const sucessoOuFalha = Math.floor(Math.random() < 0.9) //Chance menor que 90%
+                const sucessoOuFalha = Math.random() < 0.9 //Chance menor que 90%
 
                 if(sucessoOuFalha){
-                    
+                    resolve({status: "sucesso", valor: valorTotal})
+                } else {
+                    reject({status: "erro", mensagem: "Falha no pagamento"})
                 }
-            }, 1500)
+            }, 1500)            
         })
-        
+        return resultadoPagamento;
         
     }
     catch(erro){
-
+        console.error("Erro ao processar pagamento:", erro);
+        throw erro;
     }
 }
+
+console.log("Enviando seu pedido para cozinha...");
+
+//Instanciar realização do pedido e processamento do pagamento de forma encadeada
+fazerPedido(pedido)
+    .then(mensagemDeSucesso => {
+        console.log("Está tudo ok!");
+        console.log(mensagemDeSucesso);
+        return processarPagamento(pedido);
+    })
+    .then(resultadoPagamento => {
+        console.log("Sucesso no pagamento! ✅")
+    })
+    .catch(erro => {
+        console.log("Falha");
+        console.log(erro.mensagem || erro);
+    });
