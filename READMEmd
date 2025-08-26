@@ -1,0 +1,50 @@
+# Sistema de Pedidos - Praticando Assincronicidade 
+## Sobre o Projeto
+Este projeto é um exercício prático focado em demonstrar e aplicar conceitos essenciais da programação assíncrona em JavaScript. Ele simula o fluxo de um sistema de pedidos de um restaurante, desde a busca do cardápio até o processamento do pagamento, utilizando diferentes abordagens para lidar com operações que não ocorrem de forma instantânea.
+
+O principal objetivo é reforçar o entendimento de Callbacks, Promises e Async/Await, mostrando como encadear operações assíncronas de maneira clara e controlada.
+
+## Funcionalidades Praticadas
+O código simula as seguintes etapas de um sistema de pedidos:
+
+Busca do Menu (Callback): Uma função assíncrona que simula uma chamada a uma API para obter o cardápio. Para demonstrar o tratamento de erros, ela pode retornar um sucesso ou uma falha de conexão.
+
+Realização do Pedido (Promise): Uma Promise que simula o envio do pedido para a cozinha. Ela retorna uma mensagem de sucesso com o número do pedido ou uma falha caso haja algum problema (falta de item, etc.).
+
+Processamento do Pagamento (Async/Await): Uma função assíncrona que simula o processamento do pagamento. Ela demonstra como a sintaxe async/await pode simplificar o encadeamento de Promises, tornando o código mais legível e sequencial.
+
+## Conceitos Chave Abordados
+Callback: Função passada como argumento para outra função, que é executada após a conclusão de uma operação.
+
+Promise (.then() e .catch()): Objeto que representa a conclusão (ou falha) de uma operação assíncrona e permite encadear múltiplos passos.
+
+Async/Await: Uma sintaxe moderna do JavaScript que simplifica o trabalho com Promises, permitindo escrever código assíncrono que se parece com código síncrono.
+
+Manipulação de Erros: Demonstra o tratamento de erros em cada abordagem (Callback, Promise e Async/Await), garantindo que o fluxo da aplicação seja robusto.
+
+Como Executar
+Este projeto é composto por um único arquivo JavaScript, sem a necessidade de um servidor ou dependências externas.
+
+Clone o repositório:
+
+Bash
+
+git clone [URL_DO_SEU_REPOSITORIO]
+Navegue até a pasta do projeto:
+
+Bash
+
+cd [NOME_DO_PROJETO]
+Execute o arquivo JavaScript:
+
+Bash
+
+node nome_do_arquivo.js
+(Substitua nome_do_arquivo.js pelo nome do seu arquivo, se for diferente de app.js ou index.js).
+
+Autor
+Wiliam Pereira Dias
+
+LinkedIn: https://www.linkedin.com/in/wiliam-dias-b08b22208/
+
+GitHub: https://github.com/WiliamDays
